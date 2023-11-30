@@ -23,12 +23,16 @@ public class Member {
     private int id;
 
     //실명
-    @Column(name = "name",nullable = false)
+    @Column(name = "name", nullable = false)
     private String name;
 
+    //닉네임
+    @Column(name = "nickname", nullable = false)
+    private String nickname;
+
     //아이디
-    @Column(name = "username", nullable = false)
-    private String username;
+    @Column(name = "loginId", nullable = false)
+    private String loginId;
 
     //비밀번호
     @Column(name = "password", nullable = false)
@@ -39,11 +43,12 @@ public class Member {
     private String email;
 
     //휴대폰번호
-    @Column(name = "phone" , nullable = false)
+    @Column(name = "phone", nullable = false)
     private String phone;
+
 
     //가입 시간
     @Column(name = "joinDate", nullable = false)
     private LocalDateTime joinDate;
-
 }
+
