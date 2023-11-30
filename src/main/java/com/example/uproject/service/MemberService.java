@@ -53,7 +53,7 @@ public class MemberService {
     }
 
     public MemberDTO Login(MemberDTO memberDTO) {
-        Optional<Member> findLoginId = memberRepository.findByLoginId(memberDTO.getEmail());
+        Optional<Member> findLoginId = memberRepository.findByLoginId(memberDTO.getLoginId());
         if (findLoginId.isPresent()) {
                 //해당 loginId를 갖은 회원 정보가있음
              Member member = findLoginId.get();

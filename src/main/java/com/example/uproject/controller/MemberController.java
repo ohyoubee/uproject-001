@@ -5,6 +5,7 @@ import com.example.uproject.repostiory.MemberRepository;
 import com.example.uproject.service.MemberService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,14 +18,15 @@ public class MemberController {
     private final MemberService memberService;
     private final MemberRepository memberRepository;
 
+
     @GetMapping("home")
     public String firstHome() {
         return "/member/home";
     }
 
     @GetMapping("main")
-    public String main(){
-        return "/main/main";
+    public String mainPage(){
+        return "/member/main";
     }
 
     //회원가입
@@ -41,24 +43,27 @@ public class MemberController {
     }
 
     //로그인
-    @GetMapping("/login")
-    public String loginForm() {
+    @GetMapping("login")
+    public String loginForm(Model model) {
+        model.addAttribute("memberDTO",new MemberDTO());
         return "/member/login";
     }
 
-    @PostMapping("/login")
+    @PostMapping("login")
     public String login(@ModelAttribute MemberDTO memberDTO , HttpSession httpSession) {
 
         MemberDTO loginResult = memberService.Login(memberDTO);
 
         if (loginResult != null) {
 // Login 성공
+            System.out.println("로그인 성공-------------------------------");
             httpSession.setAttribute("loginId",loginResult.getLoginId());
             return
-                    "redirect:/main";
+                    "/member/main";
         } else {
 // Login 실패
-            return "/member/login";
+
+            return "/member/home";
         }
     }
 }
