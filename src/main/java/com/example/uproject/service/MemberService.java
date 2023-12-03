@@ -19,10 +19,6 @@ import java.util.Optional;
 public class MemberService {
     private final MemberRepository memberRepository;
 
-    //회원 정보 다 가져오기
-    public List<Member> getAllMembers() {
-        return memberRepository.findAll();
-    }
 
 
     //회원 등록

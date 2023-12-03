@@ -5,6 +5,28 @@
     <title>Title</title>
 </head>
 <body>
-    <
+<h1>어드민 페이지에서의 회원정보 확인 및 수정,삭제 페이지</h1>
+
+
+    <table border="1">
+        <td>번호</td>
+        <td>로그인 아이디</td>
+        <td>로그인 비밀번호</td>
+        <td>사용자 이름</td>
+        <td>닉네임</td>
+        <td>휴대폰 번호</td>
+        <td>가입 날짜</td>
+    <tr th:each="list : ${memberList}">
+        <td th:text="${list.getId()}"></td>
+        <td th:text="${list.getLoginId()}"></td>
+        <td th:text="${list.getPassword()}"></td>
+        <td th:text="${list.getName()}"></td>
+        <td th:text="${list.getNickname()}"></td>
+        <td th:text="${list.getPhone()}"></td>
+        <td th:text="${list.getJoinDate()}"></td>
+    </tr>
+    </table>
+<a href="admin">회원목록 보기</a>
+
 </body>
 </html>

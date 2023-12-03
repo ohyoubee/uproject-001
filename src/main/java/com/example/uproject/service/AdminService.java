@@ -15,8 +15,9 @@ import java.util.List;
 public class AdminService {
     private final MemberRepository memberRepository;
 
-    public List<MemberDTO> findMemberList(){
-
+    public List<Member> getAllMembers() {
+        return memberRepository.findAll();
     }
 
+    //회원 정보 다 가져오기
 }
