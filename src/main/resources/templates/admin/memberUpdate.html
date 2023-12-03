@@ -1,0 +1,35 @@
+<!-- memberUpdate.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Member Update</title>
+</head>
+<body>
+<h1>유저 정보 수정</h1>
+<form th:action="@{/update}" th:object="${member}" method="post">
+    <table border="1">
+        <td>번호</td>
+        <td>로그인 아이디</td>
+        <td>로그인 비밀번호</td>
+        <td>사용자 이름</td>
+        <td>닉네임</td>
+        <td>이메일</td>
+        <td>휴대폰 번호</td>
+        <td>가입 날짜</td>
+
+        <tr>
+            <td th:text="${member.id}"></td>
+            <td th:text="${member.loginId}"></td>
+            <td><input type="password" th:field="*{password}"/></td>
+            <td><input type="text" th:field="*{name}"/></td>
+            <td><input type="text" th:field="*{nickname}"/></td>
+            <td><input type="email" th:field="*{email}"></td>
+            <td><input type="text" th:field="*{phone}"/></td>
+            <td th:text="${member.getJoinDate()}"></td>
+        </tr>
+    </table>
+    <input type="submit" value="Update"/>
+</form>
+</body>
+</html>
