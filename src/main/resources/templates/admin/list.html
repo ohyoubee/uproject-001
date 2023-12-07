@@ -3,21 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script th:inline="javascript">
+        function confirmDelete(memberId) {
+            var confirmDelete = confirm('삭제할거에여?');
+            if (confirmDelete) {
+                window.location.href = '/delete/' + memberId;
+            }
+        }
+    </script>
 </head>
 <body>
-<h1>어드민 페이지에서의 회원정보 확인 및 수정,삭제 페이지</h1>
+<h1>어드민 페이지에서의 회원정보 확인 및 수정, 삭제 페이지</h1>
 
-
-    <table border="1">
-        <td>번호</td>
-        <td>로그인 아이디</td>
-        <td>로그인 비밀번호</td>
-        <td>사용자 이름</td>
-        <td>닉네임</td>
-        <td>휴대폰 번호</td>
-        <td>가입 날짜</td>
-        <td>액션</td>
-        <td>수정</td>
+<table border="1">
+    <td>번호</td>
+    <td>로그인 아이디</td>
+    <td>로그인 비밀번호</td>
+    <td>사용자 이름</td>
+    <td>닉네임</td>
+    <td>휴대폰 번호</td>
+    <td>가입 날짜</td>
+    <td>액션</td>
+    <td>수정</td>
     <tr th:each="list : ${memberList}">
         <td th:text="${list.getId()}"></td>
         <td th:text="${list.getLoginId()}"></td>
@@ -27,14 +34,13 @@
         <td th:text="${list.getPhone()}"></td>
         <td th:text="${list.getJoinDate()}"></td>
         <td>
-            <a th:href="@{/delete/{id}(id=${list.getId()})}">회원 삭제</a>
+            <a th:onclick="'javascript:confirmDelete(' + ${list.getId()} + ');'" href="#">회원 삭제</a>
         </td>
         <td>
             <a th:href="@{/update/{id}(id=${list.getId()})}">회원 수정</a>
         </td>
     </tr>
-    </table>
-<a href="admin">회원목록 보기</a>
-
+</table>
+<a href="admin">어드민페이지로 이동</a>
 </body>
 </html>

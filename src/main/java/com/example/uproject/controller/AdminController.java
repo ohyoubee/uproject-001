@@ -51,7 +51,7 @@ public class AdminController {
     public String updateMember(@ModelAttribute  MemberDTO memberDTO,Model model ) {
         MemberDTO member = adminService.updateMember(memberDTO);
         model.addAttribute("member",member);
-        return "redirect:/";
+        return "redirect:/list";
     }
 }
 
