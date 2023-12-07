@@ -6,12 +6,8 @@ import com.example.uproject.repostiory.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.Model;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Transactional
@@ -33,6 +29,8 @@ public class AdminService {
     }
     public MemberDTO updateMember(MemberDTO memberDTO) {
         Member member = memberRepository.findById(memberDTO.getId());
+
+
         member.setId(memberDTO.getId());
         member.setLoginId(memberDTO.getLoginId());
         member.setPassword(memberDTO.getPassword());

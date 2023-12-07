@@ -48,7 +48,7 @@ public class Member {
 
 
     //가입 시간
-    @Column(name = "joinDate", nullable = false)
+    @Column(name = "joinDate")
     private LocalDateTime joinDate;
 }
 

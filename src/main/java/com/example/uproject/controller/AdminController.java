@@ -41,14 +41,17 @@ public class AdminController {
         return "redirect:/list";  // 적절한 리다이렉션 경로를 사용
     }
     @GetMapping("/update/{id}")
-    public String update(@PathVariable int id , Model model){
-        Member member = adminService.findById(id);
+//    public String update(@PathVariable int id , Model model){
+    public String update(@PathVariable("id")int id , Model model){
+    Member member = adminService.findById(id);
         model.addAttribute("member",member);
         return "/admin/memberUpdate";
     }
     @PostMapping("/update")
-    public String updateMember(@ModelAttribute MemberDTO memberDTO) {
-        adminService.updateMember(memberDTO);
-        return "redirect:/list";
+    public String updateMember(@ModelAttribute  MemberDTO memberDTO,Model model ) {
+        MemberDTO member = adminService.updateMember(memberDTO);
+        model.addAttribute("member",member);
+        return "redirect:/";
     }
 }
+
