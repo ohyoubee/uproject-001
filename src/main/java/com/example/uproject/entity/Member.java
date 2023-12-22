@@ -1,11 +1,11 @@
 package com.example.uproject.entity;
 
-import jakarta.persistence.*;
-import lombok.*;
-import org.springframework.stereotype.Service;
 
-import java.sql.Timestamp;
-import java.time.LocalDate;
+import com.example.uproject.config.Role;
+import jakarta.persistence.*;
+
+import lombok.*;
+
 import java.time.LocalDateTime;
 
 @Entity
@@ -46,9 +46,15 @@ public class Member {
     @Column(name = "phone", nullable = false)
     private String phone;
 
-
     //가입 시간
     @Column(name = "joinDate")
     private LocalDateTime joinDate;
+
+
+    //Security를 위한 role 부여
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
+    private boolean enabled;
 }
 

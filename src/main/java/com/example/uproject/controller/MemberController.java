@@ -3,9 +3,10 @@ package com.example.uproject.controller;
 import com.example.uproject.dto.MemberDTO;
 import com.example.uproject.repostiory.MemberRepository;
 import com.example.uproject.service.MemberService;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -62,8 +63,8 @@ public class MemberController {
                     "/member/main";
         } else {
 // Login 실패
-
-            return "/member/home";
+            System.out.println("로그인 실패 -----------------------------");
+            return "/member/loginFail";
         }
     }
 }

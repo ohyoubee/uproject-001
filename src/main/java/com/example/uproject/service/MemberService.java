@@ -58,6 +58,8 @@ public class MemberService {
                  MemberDTO dto = MemberDTO.toMemberDTO(member);
                  return dto;
              }else {
+                 //비밀번호가 일치하지 않음
+//                 memberDTO.setLoginFailed(true);
                  return null;
              }
         }else {
